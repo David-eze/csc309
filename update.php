@@ -1,8 +1,9 @@
 
 <?php
+
     $server = 'localhost'; // 127.0.0.1
     $username = 'root';
-    $password = 'rootroot';
+    $password = '';
     $db = 'csc309';
 
     // Open a new connection
@@ -13,7 +14,7 @@
         die("Connection failed: " . $con->connect_error);
     }
 
-    // Query
+    // Query to update user name to..
     $sql = "UPDATE users SET firstname = 'Iruoma' WHERE id = 3";
 
     $result = $con->query($sql);

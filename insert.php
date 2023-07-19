@@ -2,8 +2,8 @@
 <?php
     $server = 'localhost'; // 127.0.0.1
     $username = 'root';
-    $password = 'rootroot';
-    $db = 'csc309';
+    $password = '';
+    $db = 'csc309';// creating database
 
     // Open a new connection
     $con = new mysqli($server, $username, $password, $db);
@@ -13,11 +13,11 @@
         die("Connection failed: " . $con->connect_error);
     }
 
-    // Create a Table
+    // Create a Table and inserting  values to it
     $sql = "INSERT INTO users (firstname, lastname, email) 
     VALUES ('Nwafor', 'Benjamin', 'benjaminn@gmail.com')";
 
-    $result = $con->query($sql);
+    $result = $con->query($sql);//allowing access to the database
 
     if ($result === true) {
         echo 'Record inserted successfully';

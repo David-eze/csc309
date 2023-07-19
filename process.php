@@ -1,7 +1,7 @@
 <?php
     $server = 'localhost'; // 127.0.0.1
     $username = 'root';
-    $password = 'rootroot';
+    $password = '';
     $db = 'csc309';
 
     // Open a new connection
@@ -12,15 +12,18 @@
         die("Connection failed: " . $con->connect_error);
     }
 
-    // Query
+    // Query  once the submit button is cliked the data will be sent to the database
+    if(isset($_POST['submit'])){ 
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    $date_of_birth = $_POST['date_of_birth'];
 
-    $sql = "INSERT INTO users (firstname, lastname, email) 
-    VALUES ('$firstname', '$lastname', '$email')";
-
-    $result = $con->query($sql);
+    $sql = "INSERT INTO users (`firstname`, `lastname`, `email`,`gender`,`date_of_birth`) 
+    VALUES ('$firstname', '$lastname', '$email','$gender', '$date_of_birth ')";
+ 
+     $result = $con->query($sql);
 
     if ($result === true) {
         echo 'Record inserted successfully';
@@ -28,6 +31,14 @@
         echo 'Error inserting record: ' . $con->error;
     }
 
-    // Close connection
+
+    }
+    
+   
+
+    
     $con->close();
+
+    // Close connection
+
 ?>
